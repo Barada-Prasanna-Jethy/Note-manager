@@ -29,7 +29,7 @@ export default class Create extends Component {
         <Quilleditor
           placeholder={"Write something...."}
           onEditorChange={this.onEditorChange}
-          editorHtml={  }
+          // editorHtml={  }
         />
         <form onSubmit={this.onSubmit}>
           <div style={{ textAlign: "center", margin: "2rem" }}>

@@ -6,9 +6,9 @@ export default class Quilleditor extends Component {
   state = {
     editorHtml: ""
   };
-  componentDidMount(
-    ()=>{this.setState({editorHtml:this.props.})}
-  )
+  // componentDidMount(){
+  //   ()=>{this.setState({editorHtml:this.props.})}
+  // }
   handleChange = html => {
     this.setState(
       {

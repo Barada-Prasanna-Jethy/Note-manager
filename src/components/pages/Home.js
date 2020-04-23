@@ -1,10 +1,9 @@
 import React, { Component } from "react";
 import { Card, Icon, Col, Typography, Row } from "antd";
 
-const { Title } = Typography;
 import { Menu, Dropdown } from "antd";
 import { DownOutlined } from "@ant-design/icons";
-
+const { Title } = Typography;
 export default class Home extends Component {
   state = { contents: [] };
   componentDidMount() {
