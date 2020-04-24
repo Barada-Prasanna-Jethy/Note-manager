@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 
 export default function Header() {
   return (
-    <Menu theme="dark" mode="horizontal">
+    <Menu theme="dark" mode="horizontal" style={{ width: "100%" }}>
       <Menu.Item disabled>
         <Link to="/">
           <span style={{ color: "white" }}>LOGO</span>

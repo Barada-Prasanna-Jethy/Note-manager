@@ -1,35 +1,27 @@
 import React, { Component } from "react";
-import { Card, Icon, Col, Typography, Row } from "antd";
-
-import { Menu, Dropdown } from "antd";
-import { DownOutlined } from "@ant-design/icons";
+import { Card, Icon, Col, Typography, Row, Button, Menu, Dropdown } from "antd";
+import { DownOutlined, FolderOpenFilled } from "@ant-design/icons";
 const { Title } = Typography;
 export default class Home extends Component {
   state = { contents: [] };
   componentDidMount() {
-    this.setState({ contents: JSON.parse(localStorage.getItem("document")) });
-
-    if (localStorage.getItem("document")) {
+    if (localStorage.getItem("document"))
       this.setState({ contents: JSON.parse(localStorage.getItem("document")) });
-    } else {
-      this.setState({
-        contents: ["<p>No Notes Found</p>"]
-      });
-    }
+  }
+  onDeleteClick(index) {
+    const prevcontent = JSON.parse(localStorage.getItem("document"));
+    prevcontent.splice(index, 1);
+    localStorage.setItem("document", JSON.stringify(prevcontent));
+
+    this.setState({ contents: JSON.parse(localStorage.getItem("document")) });
+  }
+  deleteAll() {
+    localStorage.clear();
+    this.setState({
+      contents: []
+    });
   }
   render() {
-    const menu = (
-      <Menu>
-        <Menu.Item key="0">
-          <a href="http://www.alipay.com/">1st menu item</a>
-        </Menu.Item>
-        <Menu.Item key="1">
-          <a href="http://www.taobao.com/">2nd menu item</a>
-        </Menu.Item>
-        <Menu.Divider />
-        <Menu.Item key="3">3rd menu item</Menu.Item>
-      </Menu>
-    );
     const renderCards = this.state.contents.map((content, index) => {
       return (
         <Col key={index} lg={8} md={12} xs={24}>
@@ -37,10 +29,30 @@ export default class Home extends Component {
             hoverable
             style={{ width: 370, marginTop: 16 }}
             actions={[
-              <a href={`/createNote/${index}`}>
-                <Icon type="edit" key={`edit-${index}`} />
+              <a href={`/note/${index}`}>
+                <FolderOpenFilled />
               </a>,
-              <Dropdown overlay={menu} trigger={["click"]}>
+              <Dropdown
+                overlay={
+                  <Menu>
+                    <Menu.Item key="0">
+                      <a href={`/createNote/${index}`}>
+                        <Icon type="edit" /> edit note
+                      </a>
+                    </Menu.Item>
+                    <Menu.Divider />
+                    <Menu.Item
+                      key="1"
+                      onClick={() => {
+                        this.onDeleteClick(index);
+                      }}
+                    >
+                      <Icon type="delete" /> delete note
+                    </Menu.Item>
+                  </Menu>
+                }
+                trigger={["click"]}
+              >
                 <a
                   className="ant-dropdown-link"
                   onClick={e => e.preventDefault()}
@@ -61,7 +73,27 @@ export default class Home extends Component {
 
     return (
       <div style={{ width: "85%", margin: "3rem auto" }}>
-        <Title level={2}> Notes </Title>
+        <Title style={{ display: "inline-block" }} level={2}>
+          {" "}
+          Notes{" "}
+        </Title>
+        <Button
+          style={{ float: "right" }}
+          type="primary"
+          danger
+          onClick={() => {
+            this.deleteAll();
+          }}
+        >
+          Delete All
+        </Button>
+
+        {this.state.contents.length === 0 ? (
+          <Title style={{ textAlign: "center", marginTop: "2em" }}>
+            No Notes Found
+          </Title>
+        ) : null}
+
         <Row gutter={[32, 16]}>{renderCards}</Row>
       </div>
     );

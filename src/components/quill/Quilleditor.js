@@ -22,7 +22,7 @@ export default class Quilleditor extends Component {
   render() {
     return (
       <div>
-        {/* <div id="toolbar">
+        <div id="toolbar">
           <select
             className="ql-header"
             defaultValue={""}
@@ -34,7 +34,7 @@ export default class Quilleditor extends Component {
           </select>
           <button className="ql-bold" />
           <button className="ql-italic" />
-          
+
           <button className="ql-underline" />
           <button className="ql-strike" />
           <button className="ql-link" />
@@ -43,7 +43,7 @@ export default class Quilleditor extends Component {
           <button className="ql-image" />
           <button className="ql-blockquote" />
           <button className="ql-clean" />
-        </div> */}
+        </div>
         <ReactQuill
           //   ref={el => {
           //     this.reactQuillRef = el;
