@@ -18,7 +18,6 @@ export default class Create extends Component {
       localStorage.setItem("document", JSON.stringify([this.state.content]));
     }
     this.setState({ content: "" });
-    // const content = this.state.content;
     this.props.history.push("/");
     e.preventDefault();
   };

@@ -29,14 +29,14 @@ export default class Home extends Component {
             hoverable
             style={{ width: 370, marginTop: 16 }}
             actions={[
-              <a href={`/note/${index}`}>
-                <FolderOpenFilled />
+              <a href={`#/note/${index}`}>
+                Open <FolderOpenFilled />
               </a>,
               <Dropdown
                 overlay={
                   <Menu>
                     <Menu.Item key="0">
-                      <a href={`/editNote/${index}`}>
+                      <a href={`#/editNote/${index}`}>
                         <Icon type="edit" /> edit note
                       </a>
                     </Menu.Item>
@@ -57,7 +57,7 @@ export default class Home extends Component {
                   className="ant-dropdown-link"
                   onClick={e => e.preventDefault()}
                 >
-                  <Icon type="ellipsis" key="ellipsis" />
+                  Options
                   <DownOutlined />
                 </a>
               </Dropdown>

@@ -58,9 +58,6 @@ export default class Quilleditor extends Component {
           </select>
         </div>
         <ReactQuill
-          //   ref={el => {
-          //     this.reactQuillRef = el;
-          //   }}
           theme={"snow"}
           onChange={this.handleChange}
           modules={this.modules}
@@ -76,7 +73,6 @@ export default class Quilleditor extends Component {
     );
   }
   modules = {
-    // syntax: true,
     toolbar: "#toolbar"
   };
 

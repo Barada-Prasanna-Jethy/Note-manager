@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import "./App.css";
-import { BrowserRouter, Route, Switch } from "react-router-dom";
+import { HashRouter as BrowserRouter, Route, Switch } from "react-router-dom";
 
 import Createnote from "./components/pages/Create";
 import Editnote from "./components/pages/Edit";
