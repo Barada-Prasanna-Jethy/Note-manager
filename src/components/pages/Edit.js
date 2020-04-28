@@ -17,14 +17,16 @@ export default class Create extends Component {
 
   onSubmit = e => {
     const prevcontent = JSON.parse(localStorage.getItem("document"));
+    const noteId = this.props.match.params.id;
+    prevcontent.splice(noteId, 1);
     if (localStorage.getItem("document")) {
       prevcontent.push(this.state.content);
       localStorage.setItem("document", JSON.stringify(prevcontent));
     } else {
       localStorage.setItem("document", JSON.stringify([this.state.content]));
     }
+
     this.setState({ content: "" });
-    // const content = this.state.content;
     this.props.history.push("/");
     e.preventDefault();
   };
