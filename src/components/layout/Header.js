@@ -18,13 +18,13 @@ export default function Header() {
         </Link>
       </Menu.Item>
       <Menu.Item>
-        <Link to="#/createNote">
+        <Link to="/createNote">
           <Icon type="edit" />
           Create Note
         </Link>
       </Menu.Item>
       <Menu.Item>
-        <Link to="#/about">
+        <Link to="/about">
           <Icon type="info-circle" />
           About
         </Link>
