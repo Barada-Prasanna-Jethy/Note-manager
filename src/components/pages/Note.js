@@ -5,7 +5,10 @@ export default function Note(props) {
 
   const noteId = props.match.params.id;
   return (
-    <div className="notePage" style={{ width: "80%", margin: "3rem auto" }}>
+    <div
+      className="notePage"
+      style={{ width: "80%", margin: "3rem auto 3rem auto" }}
+    >
       <div dangerouslySetInnerHTML={{ __html: contents[noteId] }} />
     </div>
   );

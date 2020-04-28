@@ -1,14 +1,12 @@
 import React, { Component } from "react";
-import ReactQuill, { Quill } from "react-quill";
+import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
 
 export default class Quilleditor extends Component {
   state = {
     editorHtml: ""
   };
-  // componentDidMount(){
-  //   ()=>{this.setState({editorHtml:this.props.})}
-  // }
+
   handleChange = html => {
     this.setState(
       {
@@ -32,6 +30,15 @@ export default class Quilleditor extends Component {
             <option value="2" />
             <option value="" />
           </select>
+          <select className="ql-color">
+            <option value="red"></option>
+            <option value="green"></option>
+            <option value="blue"></option>
+            <option value="orange"></option>
+            <option value="violet"></option>
+            <option value="#d0d1d2"></option>
+            <option selected></option>
+          </select>
           <button className="ql-bold" />
           <button className="ql-italic" />
 
@@ -43,6 +50,12 @@ export default class Quilleditor extends Component {
           <button className="ql-image" />
           <button className="ql-blockquote" />
           <button className="ql-clean" />
+          <select class="ql-align">
+            <button class="ql-align" value=""></button>
+            <button class="ql-align" value="center"></button>
+            <button class="ql-align" value="right"></button>
+            <button class="ql-align" value="justify"></button>
+          </select>
         </div>
         <ReactQuill
           //   ref={el => {
@@ -52,8 +65,12 @@ export default class Quilleditor extends Component {
           onChange={this.handleChange}
           modules={this.modules}
           formats={this.formats}
-          //   value={this.state.editorHtml}
           placeholder={this.props.placeholder}
+          value={
+            this.state.editorHtml === ""
+              ? this.props.value
+              : this.state.editorHtml
+          }
         />
       </div>
     );
@@ -65,9 +82,9 @@ export default class Quilleditor extends Component {
 
   formats = [
     "header",
+    "color",
     "bold",
     "italic",
-    "align",
     "underline",
     "strike",
     "link",
@@ -75,6 +92,7 @@ export default class Quilleditor extends Component {
     "video",
     "image",
     "blockquote",
-    "clean"
+    "clean",
+    "align"
   ];
 }

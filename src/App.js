@@ -1,8 +1,9 @@
 import React, { Component } from "react";
-
+import "./App.css";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 
 import Createnote from "./components/pages/Create";
+import Editnote from "./components/pages/Edit";
 import Home from "./components/pages/Home";
 import Header from "./components/layout/Header";
 import About from "./components/pages/About";
@@ -18,7 +19,7 @@ class App extends Component {
             <Route exact path="/" component={Home} />
             <Route exact path="/note/:id" component={Note} />
             <Route exact path="/createNote" component={Createnote} />
-            <Route exact path="/createNote/:id" component={Createnote} />
+            <Route exact path="/editNote/:id" component={Editnote} />
           </Switch>
         </div>
       </BrowserRouter>

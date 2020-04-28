@@ -6,9 +6,15 @@ export default class Create extends Component {
   state = {
     content: ""
   };
+  componentDidMount() {
+    const contents = JSON.parse(localStorage.getItem("document"));
+    const noteId = this.props.match.params.id;
+    this.setState({ content: contents[noteId] });
+  }
   onEditorChange = value => {
     this.setState({ content: value });
   };
+
   onSubmit = e => {
     const prevcontent = JSON.parse(localStorage.getItem("document"));
     if (localStorage.getItem("document")) {
@@ -29,7 +35,7 @@ export default class Create extends Component {
         <Quilleditor
           placeholder={"Write something...."}
           onEditorChange={this.onEditorChange}
-          value={""}
+          value={this.state.content}
         />
         <form onSubmit={this.onSubmit}>
           <div style={{ textAlign: "center", margin: "2rem" }}>

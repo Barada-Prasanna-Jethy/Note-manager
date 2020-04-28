@@ -36,7 +36,7 @@ export default class Home extends Component {
                 overlay={
                   <Menu>
                     <Menu.Item key="0">
-                      <a href={`/createNote/${index}`}>
+                      <a href={`/editNote/${index}`}>
                         <Icon type="edit" /> edit note
                       </a>
                     </Menu.Item>
